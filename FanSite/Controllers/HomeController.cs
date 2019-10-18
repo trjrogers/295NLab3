@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FanSite.Models;
+using System.Web;
 
 namespace FanSite.Controllers
 {
@@ -41,6 +42,25 @@ namespace FanSite.Controllers
                 return View("Stories", stories);
             } else
             {
+                return View();
+            }
+        }
+
+        public ViewResult CommentForm(string title)
+        {
+            return View("CommentForm", HttpUtility.HtmlDecode(title));
+        }
+
+        [HttpPost]
+        public ViewResult CommentForm(Story story, Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                story.AddComment(story, comment);
+                IEnumerable<Story> stories = Repository.Stories;
+                return View("Stories", stories);
+            }
+            else {
                 return View();
             }
         }

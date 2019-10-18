@@ -20,10 +20,20 @@
         <p>Stories</p>
         @foreach (FanSite.Models.Story story in Model)
         {
+            @story.StoryTitle <br />
             @story.StoryText <br />
-            @story.Username <br />
-            @story.Email <br/>
-            <br />
+            @story.User.Username<br />
+            @if (story.Comments.Count > 0)
+            {
+                <h3>Comments</h3>
+                @foreach (Comment c in story.Comments)
+                {
+                    @c.CommentText <br />
+                }
+            }<br />
+
+            @*string url = "CommentForm" + "?title=" + @story.StoryTitle;
+            <a href="@url">Add comment</a>*@ <a asp-action="CommentForm" asp-route-title="@story.StoryTitle">Add comment</a>             <br />
         }
         <p><a asp-action="StoryForm">Submit a story</a></p>
 

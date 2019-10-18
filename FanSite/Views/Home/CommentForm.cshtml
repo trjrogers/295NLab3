@@ -1,5 +1,4 @@
-﻿@model FanSite.Models.Story
-
+﻿@model String
 @{
     Layout = null;
 }
@@ -8,17 +7,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Stories</title>
+    <title>Comment on story</title>
 </head>
 <body>
     <div>
-        <h1>Stories</h1>
+        <h1>Comment on this story</h1>
         <ul>
             <li><h1><a href="/">Home</a></h1></li>
             <li><h1><a href="../Sources/Index">Sources</a></h1></li>
         </ul>
 
-        <form asp-action="StoryForm" method="post">
+        <h2>Comment on @Model</h2>
+
+
+        @*<form asp-action="CommentForm" method="post">
             <div>
                 <label asp-for="User.Username">Username:</label>
                 <input asp-for="User.Username" />
@@ -28,17 +30,13 @@
                 <input asp-for="User.Email" />
             </div>
             <div>
-                <label asp-for="StoryTitle">Story Title:</label>
-                <input asp-for="StoryTitle" />
+                <label asp-for="Comments">Comment:</label>
+                <input asp-for=Comments.Add" />
             </div>
             <div>
-                <label asp-for="StoryText">Story:</label>
-                <input asp-for="StoryText" />
+                <button type="submit">Submit Comment</button>
             </div>
-            <div>
-                <button type="submit">Submit Story</button>
-            </div>
-        </form>
+        </form>*@
 
         <h3>
             <a href="../Home/History">History</a>
