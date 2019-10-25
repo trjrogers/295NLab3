@@ -46,24 +46,31 @@ namespace FanSite.Controllers
             }
         }
 
-        public ViewResult CommentForm(string title)
+        // Creates a new comment using passed parameter
+        // Returns CommentForm View and binds Comment c in the model
+        [HttpGet]
+        public ViewResult CommentForm(string title) 
         {
-            return View("CommentForm", HttpUtility.HtmlDecode(title));
+            Comment c = new Comment() { storyTitle = title };
+            return View("CommentForm", c);
         }
 
         [HttpPost]
-        public ViewResult CommentForm(Story story, Comment comment)
+        public ViewResult CommentForm(string storyTitle, string username, string email, string commentText)
         {
             if (ModelState.IsValid)
             {
-                story.AddComment(story, comment);
-                IEnumerable<Story> stories = Repository.Stories;
-                return View("Stories", stories);
-            }
-            else {
+                Story s = Repository.stories.Find(x => x.StoryTitle == storyTitle);
+                User u = new User() { Email = email, Username = username };
+                Comment c = new Comment() { CommentText = commentText, User = u };
+                s.AddComment(c);
+                return Stories();
+            } else
+            {
                 return View();
             }
         }
+
 
         public ViewResult Sources()
         {

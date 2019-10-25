@@ -23,6 +23,8 @@
             @story.StoryTitle <br />
             @story.StoryText <br />
             @story.User.Username<br />
+            <a asp-route-title="@story.StoryTitle" asp-action="CommentForm">Add a comment</a><br />
+
             @if (story.Comments.Count > 0)
             {
                 <h3>Comments</h3>
@@ -33,7 +35,7 @@
             }<br />
 
             @*string url = "CommentForm" + "?title=" + @story.StoryTitle;
-            <a href="@url">Add comment</a>*@ <a asp-action="CommentForm" asp-route-title="@story.StoryTitle">Add comment</a>             <br />
+            <a href="@url">Add comment</a>*@
         }
         <p><a asp-action="StoryForm">Submit a story</a></p>
 

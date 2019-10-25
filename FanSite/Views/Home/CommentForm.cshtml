@@ -1,4 +1,4 @@
-﻿@model String
+﻿@model Comment
 @{
     Layout = null;
 }
@@ -17,27 +17,29 @@
             <li><h1><a href="../Sources/Index">Sources</a></h1></li>
         </ul>
 
-        <h2>Comment on @Model</h2>
-
-
-        @*<form asp-action="CommentForm" method="post">
+        @*
+            Trying to provide the commented-on-story's title to the view, which is happening, but when I pass the 
+            title back to the controller, the title is 'null'
+        *@
+        <form asp-action="CommentForm" method="post">
+            <label asp-for="@Model.StoryTitle">Story title:</label>
+            <input disabled asp-for="@Model.StoryTitle" />
             <div>
-                <label asp-for="User.Username">Username:</label>
-                <input asp-for="User.Username" />
+                <label asp-for="username">Username:</label>
+                <input asp-for="username" />
             </div>
             <div>
-                <label asp-for="User.Email">Your email:</label>
-                <input asp-for="User.Email" />
+                <label asp-for="email">Your email:</label>
+                <input asp-for="email" />
             </div>
             <div>
-                <label asp-for="Comments">Comment:</label>
-                <input asp-for=Comments.Add" />
+                <label asp-for="CommentText">Comment:</label>
+                <input asp-for="CommentText" />
             </div>
             <div>
                 <button type="submit">Submit Comment</button>
             </div>
-        </form>*@
-
+        </form>
         <h3>
             <a href="../Home/History">History</a>
         </h3>
