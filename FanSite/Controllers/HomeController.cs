@@ -24,7 +24,7 @@ namespace FanSite.Controllers
         public ViewResult Stories()
         {
             List<Story> stories = Repository.stories;
-            stories.Sort((s1, s2) => string.Compare(s1.StoryTitle, s2.StoryTitle, StringComparison.Ordinal));
+            Repository.stories.Sort((a, b) => a.StoryTitle.CompareTo(b.StoryTitle));
             return View(stories);
         }
 
@@ -40,6 +40,7 @@ namespace FanSite.Controllers
             if (ModelState.IsValid)
             {
                 Repository.AddStory(story);
+                Repository.stories.Sort((a, b) => a.StoryTitle.CompareTo(b.StoryTitle));
                 IEnumerable<Story> stories = Repository.Stories;
                 return View("Stories", stories);
             } else

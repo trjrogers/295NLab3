@@ -5,6 +5,12 @@ namespace FanSite.Models
     public static class Repository
     {
         public static List<Story> stories = new List<Story>();
+        public static List<OnlineMediaModel> online = new List<OnlineMediaModel>();
+
+        public static IEnumerable<OnlineMediaModel> Online
+        {
+            get { return online; }
+        }
 
         public static IEnumerable<Story> Stories
         {
@@ -22,6 +28,11 @@ namespace FanSite.Models
         public static Story GetStoryByTitle(string storyTitle)
         {
             return Repository.stories.Find(x => x.StoryTitle == storyTitle);
+        }
+
+        public static void AddOnline(OnlineMediaModel o)
+        {
+            online.Add(o);
         }
     }
 }
