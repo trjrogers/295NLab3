@@ -23,7 +23,9 @@ namespace FanSite.Controllers
 
         public ViewResult Stories()
         {
-            return View(Repository.Stories);
+            List<Story> stories = Repository.stories;
+            stories.Sort((s1, s2) => string.Compare(s1.StoryTitle, s2.StoryTitle, StringComparison.Ordinal));
+            return View(stories);
         }
 
         [HttpGet]
@@ -48,11 +50,10 @@ namespace FanSite.Controllers
 
         // Creates a new comment using passed parameter
         // Returns CommentForm View and binds Comment c in the model
-        [HttpGet]
+
         public ViewResult CommentForm(string title) 
         {
-            Comment c = new Comment() { storyTitle = title };
-            return View("CommentForm", c);
+            return View("CommentForm", HttpUtility.HtmlDecode(title));
         }
 
         [HttpPost]
@@ -60,14 +61,16 @@ namespace FanSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                Story s = Repository.stories.Find(x => x.StoryTitle == storyTitle);
+                Story s = Repository.GetStoryByTitle(storyTitle);
                 User u = new User() { Email = email, Username = username };
                 Comment c = new Comment() { CommentText = commentText, User = u };
                 s.AddComment(c);
-                return Stories();
+                List<Story> stories = Repository.stories;
+                return View("Stories", stories);
             } else
             {
-                return View();
+                List<Story> stories = Repository.stories;
+                return View("Stories", stories);
             }
         }
 

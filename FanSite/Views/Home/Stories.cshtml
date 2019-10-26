@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FanSite.Models.Story>
+﻿@model List<Story>
 
 @{
     Layout = null;
@@ -18,7 +18,7 @@
         </ul>
 
         <p>Stories</p>
-        @foreach (FanSite.Models.Story story in Model)
+        @foreach (Story story in Model)
         {
             @story.StoryTitle <br />
             @story.StoryText <br />

@@ -1,4 +1,5 @@
-﻿@model Comment
+﻿@*@model Comment*@
+@model String
 @{
     Layout = null;
 }
@@ -22,19 +23,19 @@
             title back to the controller, the title is 'null'
         *@
         <form asp-action="CommentForm" method="post">
-            <label asp-for="@Model.StoryTitle">Story title:</label>
-            <input disabled asp-for="@Model.StoryTitle" />
+            <label name="@Model">Story title:</label>
+            <input name="storyTitle" value="@Model"/>
             <div>
-                <label asp-for="username">Username:</label>
-                <input asp-for="username" />
+                <label name="username">Username:</label>
+                <input name="username" />
             </div>
             <div>
-                <label asp-for="email">Your email:</label>
-                <input asp-for="email" />
+                <label name="email">Your email:</label>
+                <input name="email" />
             </div>
             <div>
-                <label asp-for="CommentText">Comment:</label>
-                <input asp-for="CommentText" />
+                <label name="CommentText">Comment:</label>
+                <input name="CommentText" />
             </div>
             <div>
                 <button type="submit">Submit Comment</button>

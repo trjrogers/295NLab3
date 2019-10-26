@@ -18,5 +18,10 @@ namespace FanSite.Models
         {
             stories.Add(story);
         }
+
+        public static Story GetStoryByTitle(string storyTitle)
+        {
+            return Repository.stories.Find(x => x.StoryTitle == storyTitle);
+        }
     }
 }

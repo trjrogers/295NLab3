@@ -10,7 +10,7 @@ namespace FanSite.Models
     {
         //Added these in the effort to provide the commented-on-story's title to the view, which is happening, 
         //but when I pass the title back to the controller, the title is 'null'
-        public string storyTitle;
+        //public string storyTitle;
         public string username;
         public string email;
 
@@ -21,6 +21,6 @@ namespace FanSite.Models
         public string CommentText { get; set; }
 
         // Also added this in the aformentioned effort on line 11
-        public string StoryTitle { get { return storyTitle; } set { storyTitle = value; } }
+        //public string StoryTitle { get { return storyTitle; } set { storyTitle = value; } }
     }
 }
