@@ -6,6 +6,13 @@ namespace FanSite.Models
     {
         public static List<Story> stories = new List<Story>();
         public static List<OnlineMediaModel> online = new List<OnlineMediaModel>();
+        public static List<PhysicalMediaModel> physical = new List<PhysicalMediaModel>();
+
+        public static IEnumerable<PhysicalMediaModel> Physical
+        {
+            get
+            { return physical;  }
+        }
 
         public static IEnumerable<OnlineMediaModel> Online
         {
@@ -33,6 +40,11 @@ namespace FanSite.Models
         public static void AddOnline(OnlineMediaModel o)
         {
             online.Add(o);
+        }
+
+        public static void AddPhysical(PhysicalMediaModel p)
+        {
+            physical.Add(p);
         }
     }
 }

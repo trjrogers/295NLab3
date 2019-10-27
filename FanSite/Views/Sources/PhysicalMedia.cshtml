@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<PhysicalMediaModel>
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -13,12 +14,17 @@
         <ul>
             <li><h1><a href="/">Home</a></h1></li>
             <li><h1><a href="/Sources/Index">Sources</a></h1></li>
+            <li><h1><a href="/Sources/PhysicalMedia">Books and print media</a></h1></li>
+            <li><h1><a href="/Sources/OnlineMedia">Links to online media</a></h1></li>
         </ul>
 
-        <h2><a href="https://www.dccomics.com/comics/batman-facsimile-edition-2019/batman-251-facsimile-edition-1">Buy comics with the Joker</a></h2>
-
-        <h3><a href="PhysicalMedia">o Books and print media</a></h3>
-        <h3><a href="OnlineMedia">o Links to online media</a></h3>
+        @foreach (PhysicalMediaModel p in Model)
+        {
+            <div>
+                @p.Title <br />
+                <a href="@p.Link">@p.Description</a><br />
+                <br />
+            </div>}
     </div>
 </body>
 </html>

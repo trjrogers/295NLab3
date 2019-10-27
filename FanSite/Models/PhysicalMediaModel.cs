@@ -7,18 +7,15 @@ namespace FanSite.Models
 {
     public class PhysicalMediaModel
     {
-        private List<PhysicalMediaModel> physicalList = new List<PhysicalMediaModel>();
-
-        public List<PhysicalMediaModel> PhysicalList
-        {
-            get
-            {
-                return physicalList;
-            }
-        }
-
         public string Title { get; set; }
         public string Description { get; set; }
         public string Link { get; set; }
+
+        public PhysicalMediaModel(string title, string description, string link)
+        {
+            Title = title;
+            Description = description;
+            Link = link;
+        }
     }
 }
